@@ -24,12 +24,13 @@ A professional Microsoft enterprise administration lab built on KVM/QEMU via UnR
 
 ## Repository Structure
 
-enterprise-ad-lab/
-├── docs/          # Step-by-step lab documentation
-├── powershell/    # Scripts and automation
-├── screenshots/   # Lab screenshots referenced in docs
-├── diagrams/      # Network and architecture diagrams
-└── notes/         # Rough notes and troubleshooting
+| Folder | Purpose |
+|---|---|
+| `docs/` | Step-by-step lab documentation |
+| `powershell/` | Scripts and automation |
+| `screenshots/` | Lab screenshots referenced in docs |
+| `diagrams/` | Network and architecture diagrams |
+| `notes/` | Rough notes and troubleshooting |
 
 ## Goals
 
