@@ -40,6 +40,8 @@ Use PowerShell to automate common Active Directory administration tasks, includi
 - Used Get-ADUser to display updated account information
 - Added error handling and tested the script using multiple domain accounts
 
+![Powershell Active Directory Account Management](../screenshots/powershell-account-management.png)
+
 ### 4. Active Directory User Auditing
 - Updated the existing PowerShell audit script to collect domain user information
 - Used Get-ADUser to retrieve usernames, departments, account status, and password information
@@ -48,6 +50,8 @@ Use PowerShell to automate common Active Directory administration tasks, includi
 - Used Export-Csv to generate a user audit report
 - Verified the exported CSV contained all five test accounts
 - Practiced filtering account information using Where-Object
+
+![PowerShell Active Directory User Audit](../screenshots/powershell-ad-user-audit.png)
 
 ## Scripts
 | Script | Purpose |

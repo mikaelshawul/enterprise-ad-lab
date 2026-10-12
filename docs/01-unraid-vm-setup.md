@@ -33,3 +33,5 @@ Deploy a Windows Server 2022 virtual machine on KVM/QEMU via UnRAID to serve as 
 - Disabled IPv6
 - Configured static IP: 192.168.1.251
 - Temporary DNS set to 1.1.1.1 pending AD DS installation
+
+![DC1 Server Manager Configuration](../screenshots/dc1-server-manager.png)

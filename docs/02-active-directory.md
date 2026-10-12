@@ -33,6 +33,8 @@ Configure Active Directory Domain Services (AD DS) on DC1 to manage domain users
 - Enabled accidental deletion protection for the OUs
 - Verified the OU structure in Active Directory Users and Computers
 
+![Active Directory OU Structure](../screenshots/ad-ou-structure.png)
+
 ### 4. User Account Management
 - Created three test domain users in the Users OU using Active Directory Users and Computers
 - Configured usernames and temporary passwords
@@ -44,6 +46,8 @@ Configure Active Directory Domain Services (AD DS) on DC1 to manage domain users
 - Added John Smith and Mike Brown to GG-IT
 - Added Sarah Johnson to GG-HR
 - Verified group membership using Active Directory Users and Computers
+
+![Active Directory Users and Groups](../screenshots/ad-users-and-groups.png)
 
 ### 6. PowerShell Administration
 - Used Get-ADUser to list domain user accounts

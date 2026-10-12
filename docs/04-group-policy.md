@@ -20,6 +20,8 @@ Configure and manage Group Policy Objects (GPOs) in Active Directory to apply se
 - Linked the GPO to the Computers OU under Corp
 - Configured the machine inactivity limit to 600 seconds (10 minutes)
 
+![Group Policy Machine Inactivity Limit](../screenshots/gpo-inactivity-policy.png)
+
 ### 2. Group Policy Application and Verification
 - Ran gpupdate /force on PC1 to apply the updated policies
 - Used gpresult to confirm the workstation security GPO was applied
@@ -51,6 +53,8 @@ Configure and manage Group Policy Objects (GPOs) in Active Directory to apply se
 - Removed the individual RDP permissions previously configured on PC1
 - Verified the local group membership using PowerShell
 - Confirmed that IT users could connect through RDP while the HR test user was denied access
+
+![Group Policy RDP Access Configuration](../screenshots/gpo-it-rdp-access.png)
 
 ## Troubleshooting
 

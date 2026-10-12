@@ -32,6 +32,8 @@ Configure a Windows 11 Pro workstation and join it to the corp.local Active Dire
 - Signed in using the CORP\jsmith domain account
 - Verified domain membership using PowerShell
 
+![PC1 Joined to Active Directory Domain](../screenshots/pc1-domain-membership.png)
+
 ### 4. Active Directory Computer Management
 - Located PC1 in the default Computers container
 - Moved PC1 into the custom Corp/Computers OU

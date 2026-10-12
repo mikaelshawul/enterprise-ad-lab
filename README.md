@@ -1,39 +1,59 @@
-# Enterprise Hybrid AD Lab
+# Enterprise Active Directory Lab
 
-A professional Microsoft enterprise administration lab built on KVM/QEMU via UnRAID, documenting the full lifecycle of a hybrid identity environment.
+A hands-on Windows Server and Active Directory homelab built using KVM/QEMU on UnRAID. This project simulates a small enterprise Windows environment to practice systems administration, Group Policy, user management, PowerShell automation, and troubleshooting.
 
 ## Environment
 
 | Component | Details |
 |---|---|
 | Hypervisor | KVM/QEMU via UnRAID |
-| Domain Controller | Windows Server 2022 |
-| Clients | Windows 11 Pro (x2)|
-| Cloud Identity | Microsoft Entra ID |
-| MDM | Microsoft Intune |
-| Admin Portal | Microsoft 365 Admin Center |
+| Domain Controller | DC1 - Windows Server 2022 |
+| Workstation | PC1 - Windows 11 Pro |
+| Domain | corp.local |
+| Networking | Bridged LAN (br0) |
+| Administration | RDP, PowerShell, Active Directory Users and Computers, Group Policy Management |
 
-## Lab Phases
+## Lab Documentation
 
-| Phase | Topic | Status |
-|---|---|---|
-| 1 | Active Directory & PowerShell | 🔄 In Progress |
-| 2 | Microsoft Entra ID | ⏳ Pending |
-| 3 | Microsoft Intune | ⏳ Pending |
-| 4 | Microsoft 365 Admin Center | ⏳ Pending |
-
-## Repository Structure
-
-| Folder | Purpose |
+| Section | Description |
 |---|---|
-| `docs/` | Step-by-step lab documentation |
-| `powershell/` | Scripts and automation |
-| `screenshots/` | Lab screenshots referenced in docs |
+| [01 - UnRAID VM Setup](docs/01-unraid-vm-setup.md) | Deployed and configured Windows Server 2022 as a virtual machine |
+| [02 - Active Directory](docs/02-active-directory.md) | Configured AD DS, DNS, organizational units, users, and security groups |
+| [03 - Domain Join](docs/03-domain-join.md) | Joined Windows 11 Pro to the domain and configured workstation access |
+| [04 - Group Policy](docs/04-group-policy.md) | Configured security policies, password and account lockout settings, and group-based RDP access |
+| [05 - PowerShell Automation](docs/05-powershell.md) | Automated user provisioning, account management, and auditing |
 
-## Goals
+## PowerShell Scripts
 
-- Build a functional hybrid Active Directory environment
-- Integrate on-premises AD with Microsoft Entra ID
-- Manage devices via Microsoft Intune
-- Develop practical PowerShell automation skills
-- Produce professional documentation suitable for a portfolio
+| Script | Description |
+|---|---|
+| [create-ad-users.ps1](powershell/create-ad-users.ps1) | Creates AD users from a CSV file, assigns security groups, and configures temporary passwords |
+| [manage-ad-accounts.ps1](powershell/manage-ad-accounts.ps1) | Interactive tool for enabling, disabling, unlocking, and reviewing domain accounts |
+| [audit-ad-users.ps1](powershell/audit-ad-users.ps1) | Collects user information and exports an Active Directory audit report |
+| [new-users.csv](powershell/new-users.csv) | Sample employee data used for bulk user provisioning |
+
+## Key Skills Practiced
+
+- Windows Server 2022 installation and administration
+- Active Directory Domain Services (AD DS) and DNS
+- Organizational unit, user, and security group management
+- Windows 11 domain joining and Remote Desktop
+- Group Policy creation, configuration, and troubleshooting
+- Role-based access control and least privilege
+- PowerShell scripting and Active Directory automation
+- Virtualization using UnRAID and KVM/QEMU
+
+## Troubleshooting
+
+During the lab, PC1 stopped applying computer Group Policy settings due to a broken domain secure channel.
+
+- Verified domain connectivity and access to SYSVOL
+- Identified the broken trust using `Test-ComputerSecureChannel`
+- Repaired the secure channel using PowerShell and domain administrator credentials
+- Confirmed the workstation successfully applied Group Policy afterward
+
+Additional configuration and troubleshooting details are included in the individual lab documents.
+
+## Project Purpose
+
+This lab was created to develop practical Windows administration and scripting skills beyond classroom learning. It provides hands-on experience with technologies commonly used in enterprise IT support, systems administration, and infrastructure environments.
