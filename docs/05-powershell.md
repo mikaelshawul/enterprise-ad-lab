@@ -56,7 +56,7 @@ Use PowerShell to automate common Active Directory administration tasks, includi
 ## Scripts
 | Script | Purpose |
 |---|---|
-| create-ad-users.ps1 | Creates AD users from a CSV and assigns security groups |
-| manage-ad-accounts.ps1 | Interactive tool for enabling, disabling, and unlocking accounts |
-| audit-ad-users.ps1 | Collects account information and exports a CSV audit report |
-| new-users.csv | Contains fictional employee information for bulk provisioning |
+| [create-ad-users.ps1](../powershell/create-ad-users.ps1) | Creates AD users from a CSV and assigns security groups |
+| [manage-ad-accounts.ps1](../powershell/manage-ad-accounts.ps1) | Interactive tool for enabling, disabling, and unlocking accounts |
+| [audit-ad-users.ps1](../powershell/audit-ad-users.ps1) | Collects account information and exports a CSV audit report |
+| [new-users.csv](../powershell/new-users.csv) | Contains fictional employee information for bulk provisioning |
