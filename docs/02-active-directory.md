@@ -32,3 +32,22 @@ Configure Active Directory Domain Services (AD DS) on DC1 to manage domain users
 - Created five child OUs: Users, Computers, Servers, Groups, and Service Accounts
 - Enabled accidental deletion protection for the OUs
 - Verified the OU structure in Active Directory Users and Computers
+
+### 4. User Account Management
+- Created three test domain users in the Users OU using Active Directory Users and Computers
+- Configured usernames and temporary passwords
+- Required users to change their passwords at first login
+- Verified the accounts were created successfully
+
+### 5. Security Groups
+- Created two global security groups: GG-IT and GG-HR
+- Added John Smith and Mike Brown to GG-IT
+- Added Sarah Johnson to GG-HR
+- Verified group membership using Active Directory Users and Computers
+
+### 6. PowerShell Administration
+- Used Get-ADUser to list domain user accounts
+- Used Get-ADGroup and Get-ADGroupMember to verify security groups and membership
+- Practiced removing and adding users to security groups with PowerShell
+- Created an AD user audit script to display account information
+- Saved the script in the powershell folder for reuse
