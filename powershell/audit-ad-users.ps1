@@ -1,11 +1,51 @@
 # Active Directory User Audit
-# Run on DC1 with the ActiveDirectory module
+# Enterprise AD Lab - corp.local
 
-Import-Module ActiveDirectory
+Import-Module ActiveDirectory -ErrorAction Stop
 
-$SearchBase = "OU=Users,OU=Corp,DC=corp,DC=local"
+# Configuration
+$UsersOU = "OU=Users,OU=Corp,DC=corp,DC=local"
+$ReportFolder = Join-Path $PSScriptRoot "reports"
+$ReportPath = Join-Path $ReportFolder "ad-user-audit.csv"
 
-Get-ADUser -Filter * -SearchBase $SearchBase -Properties Department, LastLogonDate |
-    Select-Object Name, SamAccountName, Enabled, Department, LastLogonDate |
-    Sort-Object Name |
-    Format-Table -AutoSize
+# Create reports folder if it doesn't exist
+if (-not (Test-Path $ReportFolder)) {
+    New-Item -Path $ReportFolder -ItemType Directory | Out-Null
+}
+
+# Retrieve users and their account information
+$Users = Get-ADUser -Filter * `
+    -SearchBase $UsersOU `
+    -Properties Department, LockedOut, PasswordLastSet, LastLogonDate
+
+# Build the audit report
+$Report = foreach ($User in $Users) {
+
+    # Get security group memberships
+    $Groups = Get-ADPrincipalGroupMembership -Identity $User |
+        Select-Object -ExpandProperty Name
+
+    [PSCustomObject]@{
+        Name            = $User.Name
+        Username        = $User.SamAccountName
+        Department      = $User.Department
+        Enabled         = $User.Enabled
+        LockedOut       = $User.LockedOut
+        PasswordLastSet = $User.PasswordLastSet
+        LastLogonDate   = $User.LastLogonDate
+        Groups          = ($Groups -join ", ")
+    }
+}
+
+# Sort results alphabetically
+$Report = $Report | Sort-Object Name
+
+# Display report
+Write-Host "`nACTIVE DIRECTORY USER AUDIT`n"
+$Report | Format-Table Name, Username, Department, Enabled, LockedOut -AutoSize
+
+# Export report to CSV
+$Report | Export-Csv -Path $ReportPath -NoTypeInformation
+
+Write-Host "`nReport exported to: $ReportPath"
+Write-Host "Total users audited: $($Report.Count)"
